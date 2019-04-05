@@ -74,7 +74,7 @@ ADD \
     /etc/supervisor.d/
 ADD rootfs/etc/logrotate.conf /etc/
 ADD rootfs/etc/logrotate.d/* /etc/logrotate.d/
-RUN python3 -m pip install --break-system-packages mailman-hyperkitty==1.2.0
+RUN if ( python3 -m pip install --help 2>&1|grep -q break-system-packages );then eargs="--break-system-packages";fi && python3 -m pip install $eargs mailman-hyperkitty==1.2.0
 ADD helpers/system_detect.sh helpers/*_clean.sh /tmp/corpusopssteroids/
 RUN sh -c 'set -ex \
     && echo fixperms >&2 \
