@@ -1,6 +1,6 @@
-ARG ANCESTOR=maxking/mailman-web:latest
+ARG ANCESTOR=maxking/mailman-web:0.5
 ARG RSYNC=corpusops/rsync
-FROM maxking/mailman-web:latest AS final
+FROM maxking/mailman-web:0.5 AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

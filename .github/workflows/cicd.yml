@@ -65,8 +65,8 @@ jobs:
       fail-fast: false
       matrix:
         IMAGES:
-        - "maxking/mailman-web/0.4 maxking/mailman-web/latest"
-        - "maxking/mailman-core/0.4 maxking/mailman-core/latest"
+        - "maxking/mailman-web/0.4 maxking/mailman-web/0.5 maxking/mailman-web/rolling maxking/mailman-web/latest"
+        - "maxking/mailman-core/0.4 maxking/mailman-core/0.5 maxking/mailman-core/rolling maxking/mailman-core/latest"
         #- "corpusops/test/a corpusops/test/b corpusops/test/c"
         # all images that werent explicitly told to be built would be built in the next batches
         # we span them onto N jobs
