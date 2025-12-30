@@ -1,6 +1,6 @@
-ARG ANCESTOR=maxking/mailman-web:latest
+ARG ANCESTOR=maxking/mailman-core:0.5
 ARG RSYNC=corpusops/rsync
-FROM maxking/mailman-web:latest AS final
+FROM maxking/mailman-core:0.5 AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive
@@ -74,6 +74,7 @@ ADD \
     /etc/supervisor.d/
 ADD rootfs/etc/logrotate.conf /etc/
 ADD rootfs/etc/logrotate.d/* /etc/logrotate.d/
+RUN python3 -m pip install --break-system-packages mailman-hyperkitty==1.2.0
 ADD helpers/system_detect.sh helpers/*_clean.sh /tmp/corpusopssteroids/
 RUN sh -c 'set -ex \
     && echo fixperms >&2 \
